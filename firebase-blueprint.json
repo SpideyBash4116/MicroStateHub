@@ -50,7 +50,7 @@
         "senderName": { "type": "string" },
         "receiverId": { "type": "string" },
         "receiverName": { "type": "string" },
-        "type": { "type": "string", "enum": ["alliance", "non-aggression", "trade", "peace_treaty"] },
+        "type": { "type": "string", "enum": ["alliance", "non_aggression", "trade", "peace_treaty"] },
         "status": { "type": "string", "enum": ["pending", "accepted", "rejected", "countered"] },
         "message": { "type": "string" },
         "counterOffer": { "type": "string" },
