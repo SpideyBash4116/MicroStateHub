@@ -1,20 +1,61 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# 🗺️ MicroStateHub
 
-# Run and deploy your AI Studio app
+![Version](https://img.shields.io/badge/ver-1.0.0.0a-green)
 
-This contains everything you need to run your app locally.
+> Create, manage, and explore your own micronation.
 
-View your app in AI Studio: https://ai.studio/apps/68b1f742-744f-4494-b27d-51827e8cd864
+MicroStateHub is a platform for creating and managing fictional micronations. Define your territory, establish your government, create laws, and connect with other micronations around the world.
 
-## Run Locally
+Whether you're building a tiny digital kingdom, a republic, federation, or something completely unique — MicroStateHub gives you the tools to run it.
 
-**Prerequisites:**  Node.js
+---
 
+## ✨ Features
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### 🌍 Location-Based Borders
+- Automatically create borders based on your selected location
+- Define your nation's territory
+- View and manage your claimed land
+
+### 🏛️ Nation Management
+Create your own micronation with:
+- Custom nation names
+- Government systems
+- National information
+- Members and citizens
+
+### ⚖️ Law System
+Manage your nation's legal system:
+- Create laws
+- Edit existing laws
+- Organize your nation's rules
+- Build your own legal structure
+
+### 🤝 Micronation Community
+Connect with other nations:
+- Join existing micronations
+- Discover other communities
+- Build diplomatic relationships
+
+### 👥 Citizenship
+Manage your citizens:
+- Invite members
+- Join nations
+- Participate in micronation activities
+
+---
+
+## 🚀 Getting Started
+
+### Requirements
+
+- A modern web browser
+- Internet connection
+- A MicroStateHub account
+
+### Installation (Development)
+
+Clone the repository:
+
+```bash
+git clone https://github.com/SpideyBash4116/MicroStateHub.git
