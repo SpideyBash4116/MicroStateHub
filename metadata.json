@@ -1,0 +1,6 @@
+{
+  "name": "Micronation Hub",
+  "description": "Establish, manage, and grow your own micronation. Draft custom borders using your interactive location, assign citizen ranks, create laws, engage in bilateral diplomacy, trade simulated resources, and log in securely with Google.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

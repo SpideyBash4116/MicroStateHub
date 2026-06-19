@@ -1,0 +1,118 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with micronation citizenship and rank/title",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "micronationId": { "type": "string" },
+        "rank": { "type": "string", "enum": ["Sovereign", "Minister", "Officer", "Citizen", "Resident"] },
+        "title": { "type": "string" },
+        "joinedAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "displayName"]
+    },
+    "Micronation": {
+      "title": "Micronation",
+      "description": "Micronation entity details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "motto": { "type": "string" },
+        "description": { "type": "string" },
+        "sovereignId": { "type": "string" },
+        "currencyName": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "borderPoints": { "type": "array" },
+        "resources": { "type": "object" },
+        "policies": { "type": "object" },
+        "population": { "type": "number" },
+        "happiness": { "type": "number" },
+        "stability": { "type": "number" },
+        "laws": { "type": "array" },
+        "historyLog": { "type": "array" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "sovereignId", "currencyName", "latitude", "longitude"]
+    },
+    "DiplomaticRequest": {
+      "title": "DiplomaticRequest",
+      "description": "Diplomatic proposal sent between micronations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "receiverName": { "type": "string" },
+        "type": { "type": "string", "enum": ["alliance", "non-aggression", "trade", "peace_treaty"] },
+        "status": { "type": "string", "enum": ["pending", "accepted", "rejected", "countered"] },
+        "message": { "type": "string" },
+        "counterOffer": { "type": "string" },
+        "sentAt": { "type": "string" }
+      },
+      "required": ["id", "senderId", "senderName", "receiverId", "receiverName", "type", "status"]
+    },
+    "War": {
+      "title": "War",
+      "description": "War record and ongoing conflicts/peace records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "attackerId": { "type": "string" },
+        "attackerName": { "type": "string" },
+        "defenderId": { "type": "string" },
+        "defenderName": { "type": "string" },
+        "status": { "type": "string", "enum": ["ongoing", "peace"] },
+        "startedAt": { "type": "string" },
+        "endedAt": { "type": "string" },
+        "terms": { "type": "string" }
+      },
+      "required": ["id", "attackerId", "attackerName", "defenderId", "defenderName", "status", "startedAt"]
+    },
+    "TradeOffer": {
+      "title": "TradeOffer",
+      "description": "Trade offer proposals between micronations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "receiverName": { "type": "string" },
+        "senderOffer": { "type": "object" },
+        "receiverOffer": { "type": "object" },
+        "status": { "type": "string", "enum": ["pending", "accepted", "rejected"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "senderId", "senderName", "receiverId", "receiverName", "senderOffer", "receiverOffer", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User directory profiles"
+    },
+    "/micronations/{micronationId}": {
+      "schema": "Micronation",
+      "description": "Sovereign micronation details"
+    },
+    "/diplomaticRequests/{requestId}": {
+      "schema": "DiplomaticRequest",
+      "description": "Global diplomatic proposals"
+    },
+    "/wars/{warId}": {
+      "schema": "War",
+      "description": "Global war and peace tracking"
+    },
+    "/tradeOffers/{offerId}": {
+      "schema": "TradeOffer",
+      "description": "Trade bids between micronations"
+    }
+  }
+}

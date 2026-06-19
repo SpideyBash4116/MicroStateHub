@@ -1,0 +1,58 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    // Collection match rules
+
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isOwner(userId);
+      allow delete: if false;
+    }
+
+    match /test/{documentId} {
+      allow read, write: if true;
+    }
+
+    match /micronations/{micronationId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && request.resource.data.sovereignId == request.auth.uid;
+      allow update: if isAuthenticated();
+      allow delete: if isAuthenticated() && resource.data.sovereignId == request.auth.uid;
+    }
+
+    match /diplomaticRequests/{requestId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && request.resource.data.senderId == request.auth.uid;
+      allow update: if isAuthenticated();
+      allow delete: if isAuthenticated() && (resource.data.senderId == request.auth.uid || resource.data.receiverId == request.auth.uid);
+    }
+
+    match /wars/{warId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated();
+      allow delete: if false;
+    }
+
+    match /tradeOffers/{offerId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && request.resource.data.senderId == request.auth.uid;
+      allow update: if isAuthenticated();
+      allow delete: if isAuthenticated() && (resource.data.senderId == request.auth.uid || resource.data.receiverId == request.auth.uid);
+    }
+  }
+}
